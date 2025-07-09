@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>摸彩中獎查詢系統</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    h2 {
+      color: #333;
+    }
+    input {
+      padding: 10px;
+      width: 60%;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎁 摸彩中獎查詢系統 🎁</h2>
+  <p>請輸入您的摸彩號碼：</p>
+  <input type="text" id="number" placeholder="例如 01">
+  <br>
+  <button onclick="checkWinner()">查詢</button>
+  <div id="result"></div>
+
+  <script>
+    // === 把下面這個清單換成你們實際中獎號碼 ===
+    const winners = [
+      '01', '03', '04', '05', '08', '07'
+,'09'
+    ];
+
+    function checkWinner() {
+      const input = document.getElementById('number').value.trim().toUpperCase();
+      const resultDiv = document.getElementById('result');
+
+      if (!input) {
+        resultDiv.innerHTML = '⚠️ 請先輸入號碼';
+        resultDiv.style.color = 'orange';
+        return;
+      }
+
+      if (winners.includes(input)) {
+        resultDiv.innerHTML = `🎉 恭喜！${input} 中獎了！`;
+        resultDiv.style.color = 'green';
+      } else {
+        resultDiv.innerHTML = `😢 很抱歉，${input} 未中獎`;
+        resultDiv.style.color = 'red';
+      }
+    }
+  </script>
+</body>
+</html>
