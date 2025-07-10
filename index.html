@@ -42,10 +42,16 @@
   <div id="result"></div>
 
   <script>
-    // === 把下面這個清單換成你們實際中獎號碼 ===
-    const winners = [
-      '01', '03', '04', '05', '08', '07','10'
-    ];
+    // 這裡是「號碼對應獎項」的清單
+    const winners = {
+      '01': '頭獎',
+      '06': '二獎',
+      '12': '三獎',
+      '23': '安慰獎',
+      '67': '安慰獎',
+      '78': '特別獎',
+      '88': '五億現金'
+    };
 
     function checkWinner() {
       const input = document.getElementById('number').value.trim().toUpperCase();
@@ -57,8 +63,9 @@
         return;
       }
 
-      if (winners.includes(input)) {
-        resultDiv.innerHTML = `🎉 恭喜！${input} 中獎了！`;
+      if (winners.hasOwnProperty(input)) {
+        const prize = winners[input];
+        resultDiv.innerHTML = `🎉 恭喜！${input} 中獎！<br>🏆 獎項：${prize}`;
         resultDiv.style.color = 'green';
       } else {
         resultDiv.innerHTML = `😢 很抱歉，${input} 未中獎`;
@@ -68,3 +75,4 @@
   </script>
 </body>
 </html>
+
