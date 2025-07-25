@@ -36,22 +36,35 @@
 <body>
   <h2>🎁 摸彩中獎查詢系統 🎁</h2>
   <p>請輸入您的摸彩號碼：</p>
-  <input type="text" id="number" placeholder="例如 01">
+  <input type="text" id="number" placeholder="例如 A123">
   <br>
   <button onclick="checkWinner()">查詢</button>
   <div id="result"></div>
 
   <script>
-    // 這裡是「號碼對應獎項」的清單
-    const winners = {
-      '01': '頭獎',
-      '06': '二獎',
-      '12': '三獎',
-      '23': '安慰獎',
-      '67': '安慰獎',
-      '78': '特別獎',
-      '88': '五億現金'
-    };
+    // ✨ 這裡是獎項清單，每個獎項都可以有多個中獎號碼
+    const prizeList = [
+      {
+        prize: '頭獎',
+        sponsor: '全聯福利中心',
+        winners: ['101']
+      },
+      {
+        prize: '二獎',
+        sponsor: '星巴克',
+        winners: ['102', '103']
+      },
+      {
+        prize: '三獎',
+        sponsor: '誠品書店',
+        winners: ['201', '202', '203']
+      },
+      {
+        prize: '安慰獎',
+        sponsor: '個人贊助',
+        winners: ['301', '302', '303', '304']
+      }
+    ];
 
     function checkWinner() {
       const input = document.getElementById('number').value.trim().toUpperCase();
@@ -63,11 +76,21 @@
         return;
       }
 
-      if (winners.hasOwnProperty(input)) {
-        const prize = winners[input];
-        resultDiv.innerHTML = `🎉 恭喜！${input} 中獎！<br>🏆 獎項：${prize}`;
-        resultDiv.style.color = 'green';
-      } else {
+      let found = false;
+      for (const entry of prizeList) {
+        if (entry.winners.includes(input)) {
+          resultDiv.innerHTML = `
+            🎉 恭喜！${input} 中獎！<br>
+            🏆 獎項：${entry.prize}<br>
+            🎁 贊助：${entry.sponsor}
+          `;
+          resultDiv.style.color = 'green';
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
         resultDiv.innerHTML = `😢 很抱歉，${input} 未中獎`;
         resultDiv.style.color = 'red';
       }
@@ -75,4 +98,3 @@
   </script>
 </body>
 </html>
-
