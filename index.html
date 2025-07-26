@@ -36,34 +36,47 @@
 <body>
   <h2>🎁 摸彩中獎查詢系統 🎁</h2>
   <p>請輸入您的摸彩號碼：</p>
-  <input type="text" id="number" placeholder="例如 A123">
+  <input type="text" id="number" placeholder="例如 01、12、120">
   <br>
   <button onclick="checkWinner()">查詢</button>
   <div id="result"></div>
 
   <script>
-    // ✨ 這裡是獎項清單，每個獎項都可以有多個中獎號碼
     const prizeList = [
-      {
-        prize: '頭獎',
-        sponsor: '全聯福利中心',
-        winners: ['101']
-      },
-      {
-        prize: '二獎',
-        sponsor: '星巴克',
-        winners: ['102', '103']
-      },
-      {
-        prize: '三獎',
-        sponsor: '誠品書店',
-        winners: ['201', '202', '203']
-      },
-      {
-        prize: '安慰獎',
-        sponsor: '個人贊助',
-        winners: ['301', '302', '303', '304']
-      }
+      { prize: "桌上型電風扇", sponsor: "東莞維敏塑膠公司  何淑龍董事長", winners: ["01","",] },
+      { prize: "養生紅棗片", sponsor: "林宇馨顧問", winners: [] },
+      { prize: "高級燕窩禮盒", sponsor: "謝總進顧問", winners: [] },
+      { prize: "高級人蔘禮盒", sponsor: "泰國台灣慈善基金會 郭修敏董事長", winners: [] },
+      { prize: "高級人蔘禮盒", sponsor: "泰國台灣總商會 陳明政 副總會長", winners: [] },
+      { prize: "高級鮑魚禮盒", sponsor: "吞武里台商聯誼會 賴俊宏永遠名譽會長", winners: [] },
+      { prize: "高級燕窩禮盒 3 A 100 公克", sponsor: "益緯燕窩 周占富董事長", winners: [] },
+      { prize: "泰奧琪品牌水果干", sponsor: "三季食品（泰奧琪）公司  吳乃榮董事長", winners: [] },
+      { prize: "雙人免費住宿卷（含早餐）", sponsor: "黃智銘顧問", winners: [] },
+      { prize: "保健食品", sponsor: "帕亞泰醫院", winners: [] },
+      { prize: "印表機", sponsor: "林易審", winners: [] },
+      { prize: "機票", sponsor: "泰晶造漆  郭仲揚總經理", winners: [] },
+      { prize: "機票", sponsor: "亮點休閒會所餐廳  朱振鎰董事長", winners: [] },
+      { prize: "機票", sponsor: "温德農諮詢顧問", winners: [] },
+      { prize: "機票", sponsor: "劉綉雲顧問", winners: [] },
+      { prize: "機票", sponsor: "北欖台商會 余奕錦會長", winners: [] },
+      { prize: "機票", sponsor: "南瑤媽祖宮 林朝坤主委", winners: [] },
+      { prize: "機票", sponsor: "大玲昌獅子會 林承暉會長", winners: [] },
+      { prize: "機票", sponsor: "台灣會館  張清標監事長", winners: [] },
+      { prize: "機票", sponsor: "台灣會館  林啟賢會長", winners: [] },
+      { prize: "機票", sponsor: "羅氏企業股份有限公司  羅文吉董事長", winners: [] },
+      { prize: "機票", sponsor: "泰國留台校友會  陳光輝會長", winners: [] },
+      { prize: "機票", sponsor: "福壽實業公司  陳進興董事長", winners: [] },
+      { prize: "機票", sponsor: "福壽實業公司  陳威宏董事長", winners: [] },
+      { prize: "機票", sponsor: "黃博裕副會長", winners: [] },
+      { prize: "機票", sponsor: "邱金山顧問", winners: [] },
+      { prize: "機票", sponsor: "黃顯勇顧問", winners: [] },
+      { prize: "機票", sponsor: "李自強副會長", winners: [] },
+      { prize: "機票", sponsor: "楊仁達顧問", winners: [] },
+      { prize: "機票", sponsor: "泰國中華會館 洪百川副理事長", winners: [] },
+      { prize: "機票", sponsor: "泰國台灣旅遊同業聯誼會 洪忠弘會長", winners: [] },
+      { prize: "機票", sponsor: "李國華顧問", winners: [] },
+      { prize: "機票", sponsor: "王裕豐顧問", winners: [] },
+      { prize: "機票", sponsor: "胡偉華副會長", winners: [] }
     ];
 
     function checkWinner() {
@@ -79,11 +92,7 @@
       let found = false;
       for (const entry of prizeList) {
         if (entry.winners.includes(input)) {
-          resultDiv.innerHTML = `
-            🎉 恭喜！${input} 中獎！<br>
-            🏆 獎項：${entry.prize}<br>
-            🎁 贊助：${entry.sponsor}
-          `;
+          resultDiv.innerHTML = `🎉 恭喜！${input} 中獎！<br>🏆 獎項：${entry.prize}<br>🎁 贊助：${entry.sponsor}`;
           resultDiv.style.color = 'green';
           found = true;
           break;
